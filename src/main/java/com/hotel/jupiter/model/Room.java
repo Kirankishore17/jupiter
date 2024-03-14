@@ -25,7 +25,7 @@ public class Room {
 		for (int i = 1; i <= availableRoom.size(); i++) {
 			Room r = availableRoom.get(i - 1);
 			System.out.println("|--------------------------------");
-			System.out.println("|---------  ID:\" + r.getRoomId() +\"  ---------------");
+			System.out.println("|---------  ID:" + r.getRoomId() +"  ---------------");
 			System.out.println("|-- Room Title:" + r.getRoomTitle());
 			System.out.println("|-- Room Description:" + r.getRoomDescription());
 			System.out.println("|-- Room Occupancy:" + r.getRoomOccupancy());
