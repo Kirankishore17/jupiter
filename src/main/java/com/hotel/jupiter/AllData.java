@@ -1,13 +1,15 @@
 package com.hotel.jupiter;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import com.hotel.jupiter.model.Customer;
 import com.hotel.jupiter.model.DrinkItem;
 import com.hotel.jupiter.model.FoodItem;
 import com.hotel.jupiter.model.Room;
+
+/**Ernest's Imports**/
+import com.hotel.jupiter.model.Reservation;
 
 public class AllData {
 
@@ -19,6 +21,10 @@ public class AllData {
 
 	public static ArrayList<DrinkItem> drinkList = new ArrayList<DrinkItem>();
 	
+	/**Ernest's Change**/
+	
+	public static ArrayList<Reservation> reservationList = new ArrayList<Reservation>();
+	
 	
 	public static void setUp() {
 		roomList.addAll(generateRoomList());
@@ -29,7 +35,7 @@ public class AllData {
 
 
 	private static List<DrinkItem> generateDrinkItems() {
-		List<DrinkItem> list = new ArrayList();
+		List<DrinkItem> list = new ArrayList<>();
 		DrinkItem f1 = new DrinkItem();
 		f1.setMealName("Red Blend Wine");
 		f1.setMealId(0);
@@ -58,7 +64,7 @@ public class AllData {
 
 
 	private static List<FoodItem> generateFoodItems() {
-		List<FoodItem> list = new ArrayList();
+		List<FoodItem> list = new ArrayList<>();
 		FoodItem f1 = new FoodItem();
 		f1.setFoodItemType("appetizer");
 		f1.setMealName("samosa");

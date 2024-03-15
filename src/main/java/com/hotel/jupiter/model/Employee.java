@@ -4,7 +4,7 @@ public class Employee extends Account {
 
 	protected int empID;
 	protected String role;
-	HotelPropreitary hotelPropreitary;
+	protected HotelPropreitary hotelPropreitary;
 
 	public int getEmpID() {
 		return this.empID;
