@@ -1,41 +1,48 @@
 package com.hotel.jupiter.model;
 
-import java.util.*;
+import com.hotel.jupiter.AllData;
+import java.util.List;
 
 public class ReservationReport {
+	
+	private Reservation reservation;
+	private long reportCreationDate;
 
-	Collection<Reservation> reservations;
-	private Reservation[] reservationList;
-
-	public Collection<Reservation> getReservations() {
-		return this.reservations;
+	public ReservationReport() {
+		this.reportCreationDate = System.currentTimeMillis();
+	}
+	
+	/***********Getters and Setters************************/
+	public Reservation getReservations() {
+		return this.reservation;
 	}
 
-	public void setReservations(Collection<Reservation> reservations) {
-		this.reservations = reservations;
+	public void setReservations(Reservation reservation) {
+		this.reservation = reservation;
 	}
+	
+	public long getReportCreationDate() {
+		return this.reportCreationDate;
+	}
+	
+	public void setReportCreationDate(long reportCreationDate) {
+		this.reportCreationDate = reportCreationDate;
+	}
+	/********************************************************/
 
+	
 	public List<Reservation> getReservationReport() {
-		// TODO - implement ReservationReport.getReservationReport
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param roomID
-	 */
-	public Reservation getOneReservationHistoryByRoom(int roomID) {
-		// TODO - implement ReservationReport.getOneReservationHistoryByRoom
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param customerID
-	 */
-	public Reservation getOneReservationHistoryByUser(int customerID) {
-		// TODO - implement ReservationReport.getOneReservationHistoryByUser
-		throw new UnsupportedOperationException();
+		// Establish association between reservation and check-in management
+		this.reservation = this.reservation != null ? this.reservation : new Reservation();
+		
+		this.reservation.setReservationReport(this);
+		
+		if(this.reservation.getGeneralManager() != null && this.reservation.getGeneralManager().getRole() == "General_Manager") {
+			
+			return AllData.reservationList;
+		}
+		
+		return null;
 	}
 
 }

@@ -61,7 +61,7 @@ public class JupiterHotels {
 			System.out.println("  1. View Profile  ");
 			System.out.println("  2. Update Profile  ");
 			System.out.println("  3. View Rooms  ");
-			System.out.println("  4. Make Reservation  ");
+			System.out.println("  4. Reservation Section ");
 			System.out.println("  5. Log Out  ");
 			System.out.println("  6. Order Food  ");
 			System.out.println("=============================");
@@ -92,7 +92,7 @@ public class JupiterHotels {
 				r.viewRoom();
 				break;
 			case "4":
-				flag = true;
+				reservationSection(id);
 				break;
 			case "5":
 				flag = true;
@@ -142,8 +142,57 @@ public class JupiterHotels {
 			cu.viewOrders(cu.getOrder());
 			break;
 		}
-
-
-
+	}
+	
+	
+	private static void reservationSection(int id) {
+		boolean navigateBack = false;
+		
+		while(!navigateBack) {
+			
+			Customer c = AllData.customerList.stream()
+	        		.filter(cu -> cu.getCustomerId() == id).findFirst()
+	                .orElse(null);
+			
+			System.out.println("=============================");
+			System.out.println("  Welcome to Jupiter Hotels  ");
+			System.out.println("=============================");
+			System.out.println("");
+			System.out.println("Select An Option:");
+			System.out.println("|- 1. Make Reservation    ");
+			System.out.println("|- 2. Cancel Reservation  ");
+			System.out.println("|- 3. Check In            ");
+			System.out.println("|- 4. Check Out           ");
+			System.out.println("|- 5. Make Payment        ");
+			System.out.println("|- 6. Return to Main Menu ");
+			System.out.println("|--> ");
+			
+			@SuppressWarnings("resource")
+			Scanner s = new Scanner(System.in);
+			int b = Integer.parseInt(s.nextLine());
+			
+			switch(b) {
+			case 1:
+				c.makeReservation();
+				break;
+			case 2:
+				c.cancelReservation();
+				break;
+			case 3:
+				c.checkIn();
+				break;
+			case 4:
+				c.checkOut();
+				break;
+			case 5:
+				c.makePayment();
+				break;
+			case 6:
+				navigateBack = true;
+				break;
+			}
+			
+		}
+		
 	}
 }
