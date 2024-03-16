@@ -141,7 +141,7 @@ public class Reservation {
         	    });
         
         if (hasReservation) {
-            return "Reservation was not created, Customer already has an existing reservation";
+            return "Reservation was not created, You can only have one reservation at a time";
         }
         
         

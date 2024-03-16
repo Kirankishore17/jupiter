@@ -142,8 +142,17 @@ public class GeneralManager extends Employee{
 
 		System.out.println("|- Enter A Number Option:");
 		System.out.println("");
-
-		int userInput = scanner.nextInt(); // Wait for user input
+		
+		int userInput = 0;
+		
+		try {
+		    userInput = Integer.parseInt(scanner.nextLine()); // Wait for user input
+		    
+		} catch (NumberFormatException e) {
+			
+		    System.out.println("Invalid input. Please enter a valid integer.");
+		    System.out.println("");
+		}
 		
 		while (true) {
 			
@@ -155,8 +164,15 @@ public class GeneralManager extends Employee{
 		    	
 		        System.out.println("|- Invalid, Enter A Valid Number Option:");
 		        System.out.println("");
-		        
-		        userInput = scanner.nextInt(); // Wait for user input again
+				
+				try {
+				    userInput = Integer.parseInt(scanner.nextLine()); // Wait for user input
+				    
+				} catch (NumberFormatException e) {
+					
+				    System.out.println("Invalid input. Please enter a valid integer.");
+				    System.out.println("");
+				}
 		    }
 		}
 

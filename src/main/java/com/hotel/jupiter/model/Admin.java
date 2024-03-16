@@ -1,24 +1,23 @@
 package com.hotel.jupiter.model;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import com.hotel.jupiter.AllData;
+
+import lombok.Data;
+
+@Data
 public class Admin extends Account {
 
 	public int id;
-	public String name;
 
 	public int getId() {
-		return this.id;
+		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public String getName() {
-		return this.name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	/**
@@ -45,16 +44,33 @@ public class Admin extends Account {
 	 */
 	public void deleteEmployee(int empID) {
 		// TODO - implement Admin.deleteEmployee
-		throw new UnsupportedOperationException();
+		Employee emp = AllData.employeeList.stream().filter(r1 -> r1.getEmpID() == empID).findFirst().orElse(null);
+		if (emp != null) {
+			int v = AllData.employeeList.indexOf(emp);
+			AllData.employeeList.remove(v);
+		} else {
+			System.out.println("This ID does not exist!!");
+		}
+		
 	}
 
 	/**
 	 * 
 	 * @param empID
 	 */
-	public void updateEmployee(int empID) {
+	public void updateEmployee(int empID, Employee e) {
 		// TODO - implement Admin.updateEmployee
-		throw new UnsupportedOperationException();
+		Employee e2 = AllData.employeeList.stream().filter(emp -> emp.getEmpID() == empID).findFirst().orElse(null);
+		if(e2 != null) {
+			e.setEmpID(empID);
+			int v = AllData.roomList.indexOf(e2);
+			AllData.employeeList.remove(v);
+			AllData.employeeList.add(e);
+			
+		} else {
+			System.out.println("This ID does not exist!!");
+		}
+			
 	}
 
 	/**
@@ -63,39 +79,97 @@ public class Admin extends Account {
 	 */
 	public void addEmployee(Employee employee) {
 		// TODO - implement Admin.addEmployee
-		throw new UnsupportedOperationException();
+		AllData.employeeList.add(employee);
 	}
 
-	public void createRoom() {
+	public void viewEmployee() {
+		List<Employee> empList = AllData.employeeList.stream().collect(Collectors.toList());
+		for (int i = 1; i <= empList.size(); i++) {
+			Employee e = empList.get(i - 1);
+			System.out.println("|--------------------------------");
+			System.out.println("|---------  ID:" + e.getEmpID() + "  ---------------");
+			System.out.println("|-- Name:" + e.getName());
+			System.out.println("|-- Age:" + e.getAge());
+			System.out.println("|-- Role:" + e.getRole());
+			System.out.println("|-- Contact:" + e.getContact());
+			System.out.println("|-- Email:" + e.getEmail());
+			System.out.println("|--------------------------------");
+			System.out.println();
+		}
+	}
+
+	public void createRoom(Room r) {
 		// TODO - implement Admin.createRoom
-		throw new UnsupportedOperationException();
+		AllData.roomList.add(r);
 	}
 
 	/**
 	 * 
 	 * @param roomID
 	 */
-	public void deleteRoom(String roomID) {
+	public void deleteRoom(Integer roomID) { 
 		// TODO - implement Admin.deleteRoom
-		throw new UnsupportedOperationException();
+		Room room = AllData.roomList.stream().filter(r1 -> r1.getRoomId() == roomID).findFirst().orElse(null);
+		if (room != null) {
+			int v = AllData.roomList.indexOf(room);
+			AllData.roomList.remove(v);
+		} else {
+			System.out.println("This ID does not exist!!");
+		}
+		
 	}
+	
 
 	/**
 	 * 
 	 * @param roomID
 	 */
-	public void updateRoom(String roomID) {
+	public void updateRoom(Integer roomID, Room r) {
 		// TODO - implement Admin.updateRoom
-		throw new UnsupportedOperationException();
+		Room roo = AllData.roomList.stream().filter(r1 -> r1.getRoomId() == roomID).findFirst().orElse(null);
+		if (roo != null) {
+			r.setRoomId(roomID);
+			int v = AllData.roomList.indexOf(roo);
+			AllData.roomList.remove(v);
+			AllData.roomList.add(r);
+		} else {
+			System.out.println("This ID does not exist!!");
+		}
+
+	}
+
+	public void viewRooms() {
+		Room r = new Room();
+		r.viewRoom();
 	}
 
 	/**
 	 * 
 	 * @param roomID
-	 */
-	public void viewRoomDetails(String roomID) {
-		// TODO - implement Admin.viewRoomDetails
-		throw new UnsupportedOperationException();
+	 *//*
+		 * public void viewRoomDetails(String roomID) { // TODO - implement
+		 * Admin.viewRoomDetails throw new UnsupportedOperationException(); }
+		 */
+
+	public void viewProfile(Integer id) {
+		Admin c = AllData.adminList.get(id.intValue());
+		System.out.println("Name	: " + c.getName());
+		System.out.println("Email	: " + c.getEmail());
+		System.out.println("Age	: " + c.getAge());
+		System.out.println("Contact : " + c.getContact());
+
+	}
+
+	public void updateProfile(Integer id, Admin c) {
+		Admin info = AllData.adminList.get(id.intValue());
+		info.setAge(c.getAge());
+		info.setContact(c.getContact());
+		info.setName(c.getName());
+		info.setEmail(c.getEmail());
+		info.setId(id.intValue());
+		AllData.adminList.remove(id.intValue());
+		AllData.adminList.add(info);
+
 	}
 
 }

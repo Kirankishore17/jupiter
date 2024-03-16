@@ -79,7 +79,6 @@ public class Customer extends Account {
 	}
 	
 	
-	/**********************Ernest's Change*************************/
 	public void makeReservation() {
 		// assign the reservation property of this class, if not assigned
 		this.reservation = (this.reservation != null ? this.reservation : new Reservation());
@@ -112,8 +111,20 @@ public class Customer extends Account {
 
 		System.out.println("|- Enter A Number Option:");
 		System.out.println("");
+		
+		
+		int userInput = 0;
+		
+		try {
+		    userInput = Integer.parseInt(scanner.nextLine()); // Wait for user input
+		    
+		} catch (NumberFormatException e) {
+			
+		    System.out.println("Invalid input. Please enter a valid integer.");
+		    System.out.println("");
+		}
 
-		int userInput = scanner.nextInt(); // Wait for user input
+		
 
 		while (true) {
 			
@@ -125,8 +136,15 @@ public class Customer extends Account {
 		    	
 		        System.out.println("|- Invalid, Enter A Valid Number Option:");
 		        System.out.println("");
-		        
-		        userInput = scanner.nextInt(); // Wait for user input again
+				
+				try {
+				    userInput = Integer.parseInt(scanner.nextLine()); // Wait for user input
+				    
+				} catch (NumberFormatException e) {
+					
+				    System.out.println("Invalid input. Please enter a valid integer.");
+				    System.out.println("");
+				}
 		    }
 		}
 
@@ -231,7 +249,18 @@ public class Customer extends Account {
 			System.out.println("|- Enter Amount To Proceed:");
 			System.out.println("");
 			
-			int userInput = scanner.nextInt(); // Wait for user input
+			
+			int userInput = 0;
+			
+			try {
+			    userInput = Integer.parseInt(scanner.nextLine()); // Wait for user input
+			    
+			} catch (NumberFormatException e) {
+				
+			    System.out.println("Invalid input. Please enter a valid integer.");
+			    System.out.println("");
+			}
+			
 			
 			while (true) {
 				
@@ -244,7 +273,15 @@ public class Customer extends Account {
 			        System.out.println("|- Invalid, Amount is less than your bill. Try again!!!:");
 			        System.out.println("");
 			        
-			        userInput = scanner.nextInt(); // Wait for user input again
+					
+					try {
+					    userInput = Integer.parseInt(scanner.nextLine()); // Wait for user input
+					    
+					} catch (NumberFormatException e) {
+						
+					    System.out.println("Invalid input. Please enter a valid integer.");
+					    System.out.println("");
+					}
 			    }
 			}
 			
@@ -265,7 +302,14 @@ public class Customer extends Account {
 			System.out.println("|- Enter A Number Option:");
 			System.out.println("");
 			
-			userInput = scanner.nextInt(); // Wait for user input
+			try {
+			    userInput = Integer.parseInt(scanner.nextLine()); // Wait for user input
+			    
+			} catch (NumberFormatException e) {
+				
+			    System.out.println("Invalid input. Please enter a valid integer.");
+			    System.out.println("");
+			}
 			
 			while (true) {
 				
@@ -278,7 +322,15 @@ public class Customer extends Account {
 			        System.out.println("|- Invalid, Enter A Valid Number Option:");
 			        System.out.println("");
 			        
-			        userInput = scanner.nextInt(); // Wait for user input again
+					
+					try {
+					    userInput = Integer.parseInt(scanner.nextLine()); // Wait for user input
+					    
+					} catch (NumberFormatException e) {
+						
+					    System.out.println("Invalid input. Please enter a valid integer.");
+					    System.out.println("");
+					}
 			    }
 			}
 			
@@ -389,7 +441,7 @@ public class Customer extends Account {
 			if(checkinManagement.getCheckIn()) {
 		
 				// change message
-				message = "Unsuccessful, You need to pay your bills";
+				message = "Unsuccessful, You need to pay your bills first";
 				
 				// check if customer has paid
 				boolean isPaid = reservation.getInvoice().getPaid();
@@ -420,6 +472,14 @@ public class Customer extends Account {
 		System.out.println("");
 		
 		return;
+	}
+	
+	
+	public void viewRooms()
+	{
+		Room r = new Room();
+		r.viewRoom();
+
 	}
 
 }

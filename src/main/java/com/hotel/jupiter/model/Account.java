@@ -17,11 +17,22 @@ public class Account {
 	private String password;
 
 	public int login(String user, String pass) {
+		if(user.equalsIgnoreCase("admin") && pass.equalsIgnoreCase("admin")) {
+			return -30;
+		}
+		else if(user.equalsIgnoreCase("gm") && pass.equalsIgnoreCase("gm")) {
+			return -20;
+		} 
+		else if(user.equalsIgnoreCase("ec") && pass.equalsIgnoreCase("ec")) {
+			return -10;
+		} 
+		else {
 		List<Customer> customers = AllData.customerList.stream()
 				.filter(c -> c.getEmail().equals(user) && c.getPassword().equals(pass)).collect(Collectors.toList());
 		return customers.isEmpty() ? -1 : customers.get(0).getCustomerId().intValue();
+		}
 	}
-
+	
 	public void signUp(Customer c) {
 		AllData.customerList.add(c);
 		System.out.println("Customer registration successful");

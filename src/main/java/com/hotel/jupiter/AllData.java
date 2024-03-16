@@ -3,8 +3,10 @@ package com.hotel.jupiter;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.hotel.jupiter.model.Admin;
 import com.hotel.jupiter.model.Customer;
 import com.hotel.jupiter.model.DrinkItem;
+import com.hotel.jupiter.model.Employee;
 import com.hotel.jupiter.model.FoodItem;
 import com.hotel.jupiter.model.Room;
 
@@ -23,13 +25,68 @@ public class AllData {
 	
 	public static ArrayList<Reservation> reservationList = new ArrayList<Reservation>();
 	
+	public static ArrayList<Admin> adminList = new ArrayList<Admin>();
+	
+	public static ArrayList<Employee> employeeList = new ArrayList<Employee>();
+	
 	
 	public static void setUp() {
 		roomList.addAll(generateRoomList());
 		customerList.addAll(generateCustomers());
 		foodList.addAll(generateFoodItems());
 		drinkList.addAll(generateDrinkItems());
+		adminList.addAll(addAdmin());
+		employeeList.addAll(generateEmployees());
 	}
+
+
+	private static List<Admin> addAdmin() {
+		List<Admin> list = new ArrayList();
+		Admin ad = new Admin();
+		ad.setId(12345);
+		ad.setAge(30);
+		ad.setContact("4140001111");
+		ad.setName("Admin1");
+		ad.setEmail("admin");
+		ad.setPassword("admin");
+		list.add(ad);
+		
+
+		return list;
+	}
+	private static List<Employee> generateEmployees(){
+		List<Employee> emp = new ArrayList();
+		Employee e1 = new Employee();
+		e1.setName("Sarah Connor");
+		e1.setAge(45);
+		e1.setRole("Receptionist");
+		e1.setContact("3216549871");
+		e1.setEmail("sarah.connor@jupiter.com");
+		e1.setPassword("sarah123");
+		e1.setEmpID(0);
+		emp.add(e1);
+		Employee e2 = new Employee();
+		e2.setName("Thomas Lee");
+		e2.setAge(25);
+		e2.setRole("Busboy");
+		e2.setContact("4216549871");
+		e2.setEmail("thomas.lee@jupiter.com");
+		e2.setPassword("thomas123");
+		e2.setEmpID(1);
+		emp.add(e2);
+		Employee e3 = new Employee();
+		e3.setName("Courtney Rett");
+		e3.setAge(35);
+		e3.setRole("Manager");
+		e3.setContact("3316549871");
+		e3.setEmail("courtney.rett@jupiter.com");
+		e3.setPassword("courtney123");
+		e3.setEmpID(2);
+		emp.add(e3);
+		return emp;
+		
+	}
+
 
 
 	private static List<DrinkItem> generateDrinkItems() {
