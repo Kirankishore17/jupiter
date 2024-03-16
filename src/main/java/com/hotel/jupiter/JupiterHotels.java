@@ -53,6 +53,7 @@ public class JupiterHotels {
 			}
 		}
 	}
+	
 
 	private static void successfullyLoggedin(int id) {
 		while (true) {
@@ -109,6 +110,7 @@ public class JupiterHotels {
 		}
 
 	}
+	
 
 	private static void foodArea(Integer id) {
 		System.out.println("=============================");

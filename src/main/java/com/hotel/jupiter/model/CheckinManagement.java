@@ -69,6 +69,10 @@ public class CheckinManagement {
 
 
 	public void checkOut() {
+		// Establish association between reservation and check-in management
+		this.reservation = this.reservation != null ? this.reservation : new Reservation();
+		
+		this.reservation.setCheckinManagement(this);
         
     	// retrieve room    	
     	Room room = AllData.roomList.stream()
@@ -134,6 +138,9 @@ public class CheckinManagement {
         
 		// make sure reservation is not null
         if(this.reservation != null) {
+        	
+    		// Establish association between reservation and check-in management
+    		this.reservation.setCheckinManagement(this);
             
         	// retrieve room    	
         	Room room = AllData.roomList.stream()

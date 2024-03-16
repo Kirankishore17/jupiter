@@ -36,9 +36,13 @@ public class GeneralManager extends Employee{
 		
 		Reservation r = new Reservation();
 		
+		ReservationReport rr = new ReservationReport();
+		
 		r.setGeneralManager(this);
 		
-		r.setReservationReport(new ReservationReport());
+		r.setReservationReport(rr);
+		
+		rr.setReservation(r);
 		
 		List<Reservation> allReservations = r.getReservationReport().getReservationReport();
 		
@@ -104,6 +108,7 @@ public class GeneralManager extends Employee{
 		return;
 	}
 
+	
 	public void cancelReservation() {
 		// display all reservations
 		System.out.println("=========================================");

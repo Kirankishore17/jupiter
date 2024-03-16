@@ -13,11 +13,11 @@ public class ReservationReport {
 	}
 	
 	/***********Getters and Setters************************/
-	public Reservation getReservations() {
+	public Reservation getReservation() {
 		return this.reservation;
 	}
 
-	public void setReservations(Reservation reservation) {
+	public void setReservation(Reservation reservation) {
 		this.reservation = reservation;
 	}
 	

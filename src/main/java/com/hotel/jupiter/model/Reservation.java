@@ -128,6 +128,10 @@ public class Reservation {
     
     
     public String createReservation(int roomId) {
+		// Establish association between reservation and customer
+		this.customer = this.customer != null ? this.customer : new Customer();
+		
+		this.customer.setReservation(this);
     	
         // Check if the customer already has a reservation        
         boolean hasReservation = AllData.reservationList.stream()

@@ -21,8 +21,6 @@ public class AllData {
 
 	public static ArrayList<DrinkItem> drinkList = new ArrayList<DrinkItem>();
 	
-	/**Ernest's Change**/
-	
 	public static ArrayList<Reservation> reservationList = new ArrayList<Reservation>();
 	
 	

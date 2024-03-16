@@ -13,7 +13,7 @@ public class Customer extends Account {
 	private Integer customerId;
 	private List<OrderMenuItem> order;
 	
-	/*******Ernest's Change**************/
+	
 	private Reservation reservation;
 	
 	
