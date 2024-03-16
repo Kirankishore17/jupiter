@@ -72,6 +72,7 @@ public class JupiterHotels {
 		}
 	}
 	
+
 	private static void ecLogin(int id) {
 		// TODO Auto-generated method stub
 		while (true) {
@@ -354,6 +355,7 @@ public class JupiterHotels {
 	}
 
 
+
 	private static void successfullyLoggedin(int id) {
 		while (true) {
 			System.out.println("=============================");
@@ -410,6 +412,7 @@ public class JupiterHotels {
 		}
 
 	}
+	
 
 	private static void foodArea(Integer id) {
 		System.out.println("=============================");
