@@ -5,7 +5,10 @@ import java.util.Scanner;
 import com.hotel.jupiter.model.Account;
 import com.hotel.jupiter.model.Admin;
 import com.hotel.jupiter.model.Customer;
+import com.hotel.jupiter.model.DrinkItem;
 import com.hotel.jupiter.model.Employee;
+import com.hotel.jupiter.model.ExecutiveChef;
+import com.hotel.jupiter.model.FoodItem;
 import com.hotel.jupiter.model.OrderMenuItem;
 import com.hotel.jupiter.model.Room;
 
@@ -71,7 +74,109 @@ public class JupiterHotels {
 	
 	private static void ecLogin(int id) {
 		// TODO Auto-generated method stub
-		
+		while (true) {
+			System.out.println("=============================");
+			System.out.println("  Welcome to Jupiter Hotels  ");
+			System.out.println("  1. View Profile  ");
+			System.out.println("  2. Update Profile  ");
+			System.out.println("  3. View food items  ");
+			System.out.println("  4. Add food items ");
+			System.out.println("  5. Update food items  ");
+			System.out.println("  6. Delete food items  ");
+			System.out.println("  7. View drink items  ");
+			System.out.println("  8. Add drink items ");
+			System.out.println("  9. Update drink items  ");
+			System.out.println("  10. Delete drink items  ");
+			System.out.println("  11. View all orders  ");
+			System.out.println("  12. Logout  ");
+			System.out.println("=============================");
+			Scanner s = new Scanner(System.in);
+			boolean flag = false;
+			System.out.println("Your choice: ");
+			String i = s.nextLine();
+			ExecutiveChef ec = new ExecutiveChef();
+			switch (i) {
+			
+				case "1":
+					break;
+					
+				case "2":
+					break;
+					
+				case "3":
+					ec.viewAllFoodItems();
+					break;
+					
+				case "4":
+					FoodItem item = new FoodItem();
+					System.out.println("Food Name: ");
+					item.setMealName(s.nextLine());
+					System.out.println("Food Type (Appetizer / Main / Dessert) : ");
+					item.setFoodItemType(s.nextLine());
+					System.out.println("Description: ");
+					item.setMealDescription(s.nextLine());
+					item.setMealId(AllData.foodList.get(AllData.foodList.size()-1).getMealId()+1);
+					ec.createFoodItem(item);
+					break;
+				
+				case "5":
+					ec.viewAllFoodItems();
+					System.out.println("Please enter ID of food item to update: ");
+					int foodId = s.nextInt();
+					ec.updateFoodItem(foodId);
+					break;	
+					
+				case "6":
+					ec.viewAllFoodItems();
+					System.out.println("Please enter ID of food item to delete: ");
+					int foodID = s.nextInt();
+					ec.deleteFoodItem(foodID);
+					break;
+					
+				case "7":
+					ec.viewAllDrinkItems();
+					break;
+					
+				case "8":
+					DrinkItem ditem = new DrinkItem();
+					System.out.println("Drink Name: ");
+					ditem.setMealName(s.nextLine());
+					System.out.println("Drink Description");
+					ditem.setMealDescription(s.nextLine());
+					System.out.println("Is Alcoholic (true /false) :");
+					ditem.setAlcoholic(s.nextBoolean());
+					System.out.println("Alcohol percentage (0 if non-alcoholic) :");
+					ditem.setDrinkAlcoholPercent(s.nextDouble());
+					ditem.setMealId(AllData.drinkList.get(AllData.drinkList.size()-1).getMealId()+1);
+					ec.createDrinkItem(ditem);
+					break;
+				
+				case "9":
+					ec.viewAllDrinkItems();
+					System.out.println("Please enter ID of drink item to update: ");
+					int drinkId = s.nextInt();
+					ec.updateDrinkItem(drinkId);
+					break;	
+					
+				case "10":
+					ec.viewAllDrinkItems();
+					System.out.println("Please enter ID of drink item to update: ");
+					int drinkID = s.nextInt();
+					ec.deleteDrinkItem(drinkID);
+					break;
+					
+				case "11":
+					break;
+					
+				case "12":
+					flag = true;
+					break;
+				
+			} if(flag == true) {
+				System.out.println("Successfully Loggedout");
+				break;
+			}
+		}
 	}
 
 	private static void gmLogin(int id) {
