@@ -421,5 +421,12 @@ public class Customer extends Account {
 		
 		return;
 	}
+	
+	public void viewRooms()
+	{
+		Room r = new Room();
+		r.viewRoom();
+
+	}
 
 }
