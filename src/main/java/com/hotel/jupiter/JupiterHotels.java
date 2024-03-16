@@ -88,9 +88,10 @@ public class JupiterHotels {
 				c.updateProfile(id, c);
 				break;
 			case "3":
-				Room r = new Room();
-				r.viewRoom();
+				Customer c2 = new Customer();
+				c2.viewRooms();
 				break;
+
 			case "4":
 				reservationSection(id);
 				break;
