@@ -4,9 +4,9 @@ import java.util.*;
 
 public class HotelPropreitary {
 
-	public String hotelName;
-	public String hotelAddress;
-	public String hotelDescription;
+	public String hotelName = "Jupiter Hotels";
+	public String hotelAddress = "Montreal";
+	public String hotelDescription = "Best Hotel in Montreal";
 	GeneralManager branchManager;
 	ExecutiveChef executiveChef;
 	Collection<Employee> employee;
