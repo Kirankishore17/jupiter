@@ -100,5 +100,41 @@ public class Room {
 			System.out.println();
 		}
 	}
+	
+	public void viewAllRoom() {
+		List<Room> allRoom = AllData.roomList;
+		for (int i = 1; i <= allRoom.size(); i++) {
+			Room r = allRoom.get(i - 1);
+			System.out.println("|--------------------------------");
+			System.out.println("|---------  ID:" + r.getRoomId() +"  ---------------");
+			System.out.println("|-- Room Title:" + r.getRoomTitle());
+			System.out.println("|-- Room Availability:" + r.getIsAvailable());
+			System.out.println("|-- Room Description:" + r.getRoomDescription());
+			System.out.println("|-- Room Occupancy:" + r.getRoomOccupancy());
+			System.out.println("|-- Room Number:" + r.getRoomNumber());
+			System.out.println("|-- Room Rent:" + r.getRoomPrice());
+			System.out.println("|--------------------------------");
+			System.out.println();
+		}
+	}
+	
+	public void viewBookedRooms()
+	{
+		List<Room> bookedRooms = AllData.roomList.stream().filter(r -> !r.getIsAvailable()).collect(Collectors.toList());
+		for (int i = 1; i <= bookedRooms.size(); i++) {
+			Room r = bookedRooms.get(i - 1);
+			System.out.println("|--------------------------------");
+			System.out.println("|---------  ID:\" + r.getRoomId() +\"  ---------------");
+			System.out.println("|-- Room Title:" + r.getRoomTitle());
+			System.out.println("|-- Room Description:" + r.getRoomDescription());
+			System.out.println("|-- Room Occupancy:" + r.getRoomOccupancy());
+			System.out.println("|-- Room Number:" + r.getRoomNumber());
+			System.out.println("|-- Room Rent:" + r.getRoomPrice());
+			System.out.println("|--------------------------------");
+			System.out.println();
+		}
+	}
+
+
 
 }
