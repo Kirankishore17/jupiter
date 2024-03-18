@@ -463,9 +463,35 @@ public class JupiterHotels {
 				break;
 				
 			case "11":
+				Admin admin = new Admin();
+				Employee e11 = new Employee();
+				System.out.println("Name");
+				e11.setName(s.nextLine());
+				System.out.println("Age: ");
+				e11.setAge(Integer.parseInt(s.nextLine()));
+				System.out.println("Contact number: ");
+				e11.setContact(s.nextLine());
+				e11.setRole(AllData.ROLE_GENERAL_MANAGER);
+				e11.setEmail("gm");
+				e11.setPassword("gm");
+				e11.setEmpID(AllData.employeeList.size()-1);
+				admin.assignGeneralManager(e11);
 				break;
 				
 			case "12":
+				Admin admin1 = new Admin();
+				Employee e111 = new Employee();
+				System.out.println("Name");
+				e111.setName(s.nextLine());
+				System.out.println("Age: ");
+				e111.setAge(Integer.parseInt(s.nextLine()));
+				System.out.println("Contact number: ");
+				e111.setContact(s.nextLine());
+				e111.setRole(AllData.ROLE_EXECUTIVE_CHEF);
+				e111.setEmail("ec");
+				e111.setPassword("ec");
+				e111.setEmpID(AllData.employeeList.size()-1);
+				admin1.assignExecutiveChef(e111);
 				break;
 				
 			case "13":

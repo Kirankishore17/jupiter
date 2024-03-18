@@ -22,20 +22,33 @@ public class Admin extends Account {
 
 	/**
 	 * 
+	 * @param e11
 	 * @param branchID
 	 */
-	public void assignGeneralManager(int branchID) {
-		// TODO - implement Admin.assignGeneralManager
-		throw new UnsupportedOperationException();
+	public void assignGeneralManager(Employee manager) {
+		List<Employee> list = AllData.employeeList.stream()
+				.filter(x -> x.getRole().equalsIgnoreCase(AllData.ROLE_GENERAL_MANAGER)).collect(Collectors.toList());
+		if (list.isEmpty()) {
+			AllData.employeeList.add(manager);
+		} else {
+			System.out.println("General Manager Already exists");
+		}
 	}
 
 	/**
 	 * 
+	 * @param chef
 	 * @param branchID
 	 */
-	public void assignExecutiveChef(int branchID) {
-		// TODO - implement Admin.assignExecutiveChef
-		throw new UnsupportedOperationException();
+	public void assignExecutiveChef(Employee chef) {
+		List<Employee> list = AllData.employeeList.stream()
+				.filter(x -> x.getRole().equalsIgnoreCase(AllData.ROLE_EXECUTIVE_CHEF)).collect(Collectors.toList());
+		if (list.isEmpty()) {
+			AllData.employeeList.add(chef);
+		} else {
+			System.out.println("Executive Chef Already exists");
+		}
+
 	}
 
 	/**
