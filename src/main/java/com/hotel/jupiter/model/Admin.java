@@ -64,7 +64,7 @@ public class Admin extends Account {
 		} else {
 			System.out.println("This ID does not exist!!");
 		}
-		
+
 	}
 
 	/**
@@ -74,16 +74,16 @@ public class Admin extends Account {
 	public void updateEmployee(int empID, Employee e) {
 		// TODO - implement Admin.updateEmployee
 		Employee e2 = AllData.employeeList.stream().filter(emp -> emp.getEmpID() == empID).findFirst().orElse(null);
-		if(e2 != null) {
+		if (e2 != null) {
 			e.setEmpID(empID);
 			int v = AllData.roomList.indexOf(e2);
 			AllData.employeeList.remove(v);
 			AllData.employeeList.add(e);
-			
+
 		} else {
 			System.out.println("This ID does not exist!!");
 		}
-			
+
 	}
 
 	/**
@@ -91,8 +91,13 @@ public class Admin extends Account {
 	 * @param employee
 	 */
 	public void addEmployee(Employee employee) {
-		// TODO - implement Admin.addEmployee
-		AllData.employeeList.add(employee);
+		Employee tmp = AllData.employeeList.stream().filter(ro -> (ro.getEmpID() == employee.getEmpID())).findFirst()
+				.get();
+		if (tmp == null) {
+			AllData.employeeList.add(employee);
+		} else {
+			System.out.println("Duplicate Employee id");
+		}
 	}
 
 	public void viewEmployee() {
@@ -112,15 +117,19 @@ public class Admin extends Account {
 	}
 
 	public void createRoom(Room r) {
-		// TODO - implement Admin.createRoom
-		AllData.roomList.add(r);
+		Room tmp = AllData.roomList.stream().filter(ro -> ro.getRoomId() == r.getRoomId()).findFirst().get();
+		if (tmp == null) {
+			AllData.roomList.add(r);
+		} else {
+			System.out.println("Duplicate Room id");
+		}
 	}
 
 	/**
 	 * 
 	 * @param roomID
 	 */
-	public void deleteRoom(Integer roomID) { 
+	public void deleteRoom(Integer roomID) {
 		// TODO - implement Admin.deleteRoom
 		Room room = AllData.roomList.stream().filter(r1 -> r1.getRoomId() == roomID).findFirst().orElse(null);
 		if (room != null) {
@@ -129,9 +138,8 @@ public class Admin extends Account {
 		} else {
 			System.out.println("This ID does not exist!!");
 		}
-		
+
 	}
-	
 
 	/**
 	 * 
