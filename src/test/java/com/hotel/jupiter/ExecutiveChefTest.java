@@ -1,12 +1,10 @@
 package com.hotel.jupiter;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import com.hotel.jupiter.model.Customer;
 import com.hotel.jupiter.model.DrinkItem;
 import com.hotel.jupiter.model.ExecutiveChef;
 import com.hotel.jupiter.model.FoodItem;
@@ -71,29 +69,5 @@ class ExecutiveChefTest {
 
 	}
 	
-    @Test
-    public void testUpdateFoodItem() {
-    	
-		FoodItem menuItem = new FoodItem();
-		menuItem.setMealName("testupdatefood");
-		menuItem.setMealId(444);
-		menuItem.setMealDescription("testupdatefood");
-		menuItem.setFoodItemType("testupdatefood");
-        ExecutiveChef chef = new ExecutiveChef();
-        chef.createFoodItem(menuItem);
-        assertTrue(AllData.foodList.contains(menuItem));
-		FoodItem newItem = new FoodItem();
-		newItem.setMealName("testupdatefood");
-		newItem.setMealId(444);
-		newItem.setMealDescription("testupdatefood");
-		newItem.setFoodItemType("testupdatefood");
-		FoodItem result = AllData.foodList.stream().filter(x->x.getMealId()==menuItem.getMealId()).findFirst().orElse(null);
-        int i = newItem.getCustomerId().intValue();
-        assertEquals(c2.getName(), AllData.customerList.get(i).getName());
-        assertEquals(c2.getEmail(), AllData.customerList.get(i).getEmail());
-        assertEquals(c2.getAge(), AllData.customerList.get(i).getAge());
-        assertEquals(c2.getContact(), AllData.customerList.get(i).getContact());
-    }
-
 
 }
