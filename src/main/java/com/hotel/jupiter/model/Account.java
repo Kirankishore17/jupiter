@@ -34,8 +34,13 @@ public class Account {
 	}
 	
 	public void signUp(Customer c) {
+		List<Customer> list = AllData.customerList.stream().filter(x->x.getCustomerId()==c.getCustomerId()).collect(Collectors.toList());
+		if(list.isEmpty()) {
 		AllData.customerList.add(c);
 		System.out.println("Customer registration successful");
+		} else {
+			System.out.println("Customer ID already exists");
+		}
 	}
 
 	public String getName() {

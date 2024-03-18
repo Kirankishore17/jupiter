@@ -59,8 +59,15 @@ public class ExecutiveChef extends Employee {
 	
 	public void viewAllFoodItems() {
 		List<OrderMenuItem> list = AllData.customerList.stream().flatMap(c -> c.getOrder().stream()).collect(Collectors.toList());
-		OrderMenuItem od = new OrderMenuItem();
-		od.viewFoodItems();
+		OrderMenuItem data;
+		for (int i = 0; i < list.size(); i++) {
+			data = list.get(i);
+			System.out.println("|- " + (i+1) + ". " + data.getName());
+			System.out.println("|- Qty: " + data.getQuantity());
+			System.out.println("|- Total: " + data.getTotal());
+			System.out.println("|");
+		}
+	
 	}
 	
 	public void createDrinkItem(DrinkItem menuItem) {

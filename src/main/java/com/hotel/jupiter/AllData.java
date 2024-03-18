@@ -15,21 +15,19 @@ import com.hotel.jupiter.model.Reservation;
 
 public class AllData {
 
+	public static final String ROLE_GENERAL_MANAGER = "GeneralManager";
+	public static final String ROLE_EXECUTIVE_CHEF = "GeneralManager";
+	public static final String ROLE_RECEPTIONIST = "Receptionist";
+	public static final String ROLE_BUSBOY = "Busboy";
+
 	public static ArrayList<Customer> customerList = new ArrayList<Customer>();
-
 	public static ArrayList<Room> roomList = new ArrayList<Room>();
-	
 	public static ArrayList<FoodItem> foodList = new ArrayList<FoodItem>();
-
 	public static ArrayList<DrinkItem> drinkList = new ArrayList<DrinkItem>();
-	
 	public static ArrayList<Reservation> reservationList = new ArrayList<Reservation>();
-	
 	public static ArrayList<Admin> adminList = new ArrayList<Admin>();
-	
 	public static ArrayList<Employee> employeeList = new ArrayList<Employee>();
-	
-	
+		
 	public static void setUp() {
 		roomList.addAll(generateRoomList());
 		customerList.addAll(generateCustomers());
@@ -59,7 +57,7 @@ public class AllData {
 		Employee e1 = new Employee();
 		e1.setName("Sarah Connor");
 		e1.setAge(45);
-		e1.setRole("Receptionist");
+		e1.setRole(ROLE_RECEPTIONIST);
 		e1.setContact("3216549871");
 		e1.setEmail("sarah.connor@jupiter.com");
 		e1.setPassword("sarah123");
@@ -68,7 +66,7 @@ public class AllData {
 		Employee e2 = new Employee();
 		e2.setName("Thomas Lee");
 		e2.setAge(25);
-		e2.setRole("Busboy");
+		e2.setRole(ROLE_BUSBOY);
 		e2.setContact("4216549871");
 		e2.setEmail("thomas.lee@jupiter.com");
 		e2.setPassword("thomas123");
@@ -77,7 +75,7 @@ public class AllData {
 		Employee e3 = new Employee();
 		e3.setName("Courtney Rett");
 		e3.setAge(35);
-		e3.setRole("Manager");
+		e3.setRole(ROLE_RECEPTIONIST);
 		e3.setContact("3316549871");
 		e3.setEmail("courtney.rett@jupiter.com");
 		e3.setPassword("courtney123");
