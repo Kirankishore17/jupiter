@@ -1,6 +1,8 @@
 package com.hotel.jupiter.model;
 
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import com.hotel.jupiter.AllData;
 
@@ -56,6 +58,7 @@ public class ExecutiveChef extends Employee {
 
 	
 	public void viewAllFoodItems() {
+		List<OrderMenuItem> list = AllData.customerList.stream().flatMap(c -> c.getOrder().stream()).collect(Collectors.toList());
 		OrderMenuItem od = new OrderMenuItem();
 		od.viewFoodItems();
 	}

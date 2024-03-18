@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.stream.Collectors;
+
+import com.hotel.jupiter.AllData;
 
 import java.time.Instant;
 import java.time.LocalDate;
@@ -201,6 +204,99 @@ public class GeneralManager extends Employee{
 		System.out.println("");
 		
 		return;
+	}
+	
+	/**
+	 * 
+	 * @param empID
+	 */
+	public void deleteEmployee(int empID) {
+		// TODO - implement Admin.deleteEmployee
+		Employee emp = AllData.employeeList.stream().filter(r1 -> r1.getEmpID() == empID).findFirst().orElse(null);
+		if (emp != null) {
+			int v = AllData.employeeList.indexOf(emp);
+			AllData.employeeList.remove(v);
+		} else {
+			System.out.println("This ID does not exist!!");
+		}
+		
+	}
+
+	/**
+	 * 
+	 * @param empID
+	 */
+	public void updateEmployee(int empID, Employee e) {
+		// TODO - implement Admin.updateEmployee
+		Employee e2 = AllData.employeeList.stream().filter(emp -> emp.getEmpID() == empID).findFirst().orElse(null);
+		if(e2 != null) {
+			e.setEmpID(empID);
+			int v = AllData.roomList.indexOf(e2);
+			AllData.employeeList.remove(v);
+			AllData.employeeList.add(e);
+			
+		} else {
+			System.out.println("This ID does not exist!!");
+		}
+			
+	}
+
+	/**
+	 * 
+	 * @param employee
+	 */
+	public void addEmployee(Employee employee) {
+		// TODO - implement Admin.addEmployee
+		AllData.employeeList.add(employee);
+	}
+
+	public void viewEmployee() {
+		List<Employee> empList = AllData.employeeList.stream().collect(Collectors.toList());
+		for (int i = 1; i <= empList.size(); i++) {
+			Employee e = empList.get(i - 1);
+			System.out.println("|--------------------------------");
+			System.out.println("|---------  ID:" + e.getEmpID() + "  ---------------");
+			System.out.println("|-- Name:" + e.getName());
+			System.out.println("|-- Age:" + e.getAge());
+			System.out.println("|-- Role:" + e.getRole());
+			System.out.println("|-- Contact:" + e.getContact());
+			System.out.println("|-- Email:" + e.getEmail());
+			System.out.println("|--------------------------------");
+			System.out.println();
+		}
+	}
+	
+	public void viewProfile(Integer id) {
+		Employee c = AllData.employeeList.get(id.intValue());
+		System.out.println("Name	: " + c.getName());
+		System.out.println("Email	: " + c.getEmail());
+		System.out.println("Age	: " + c.getAge());
+		System.out.println("Contact : " + c.getContact());
+
+	}
+	
+	public void viewRooms() {
+		Room r = new Room();
+		r.viewRoom();
+	}
+	
+	public void viewCustomerDetails() {
+		List<Customer> custList = AllData.customerList.stream().collect(Collectors.toList());
+		System.out.println("CUSTOMER DETAILS");
+		System.out.println("----------------------------------------");
+		System.out.println("----------------------------------------");
+		for (int i = 1; i <= custList.size(); i++) {
+			Customer c = custList.get(i - 1);
+			System.out.println("Customer " + i);
+			System.out.println("----------------------------------------");
+			System.out.println("Name	: " + c.getName());
+			System.out.println("Email	: " + c.getEmail());
+			System.out.println("Age	: " + c.getAge());
+			System.out.println("Contact : " + c.getContact());
+			System.out.println("----------------------------------------");
+			System.out.println("----------------------------------------");
+			
+		}
 	}
 
 }

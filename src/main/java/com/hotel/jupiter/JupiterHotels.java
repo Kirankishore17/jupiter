@@ -9,6 +9,7 @@ import com.hotel.jupiter.model.DrinkItem;
 import com.hotel.jupiter.model.Employee;
 import com.hotel.jupiter.model.ExecutiveChef;
 import com.hotel.jupiter.model.FoodItem;
+import com.hotel.jupiter.model.GeneralManager;
 import com.hotel.jupiter.model.OrderMenuItem;
 import com.hotel.jupiter.model.Room;
 
@@ -182,6 +183,131 @@ public class JupiterHotels {
 
 	private static void gmLogin(int id) {
 		// TODO Auto-generated method stub
+		GeneralManager gm = new GeneralManager();
+		while (true) {
+			System.out.println("=============================");
+			System.out.println("  Welcome to Jupiter Hotels  ");
+			System.out.println("  1. View Profile  ");
+			System.out.println("  2. Update Profile  ");
+			System.out.println("  3. View Employees List  ");
+			System.out.println("  4. Add Employee ");
+			System.out.println("  5. Update Employess ");
+			System.out.println("  6. Delete Employee");
+			System.out.println("  7. View all Reservation ");
+			System.out.println("  8. view Active Reservations");
+			System.out.println("  9. Cancel Reservation  ");
+			System.out.println("  10. View Customers  ");
+			System.out.println("  11. View All rooms  ");
+			System.out.println("  12. Logout  ");
+			System.out.println("=============================");
+			Scanner s = new Scanner(System.in);
+			boolean flag = false;
+			System.out.println("Your choice: ");
+			String i = s.nextLine();
+			switch (i) {
+			
+			case "1":
+				gm.viewProfile(id);
+				break;
+			
+			case "2":
+				System.out.println("Please provide the following details:");
+				Admin c = new Admin();
+				System.out.println("Name");
+				c.setName(s.nextLine());
+				System.out.println("Email (username): ");
+				c.setEmail(s.nextLine());
+				System.out.println("Age: ");
+				c.setAge(Integer.parseInt(s.nextLine()));
+				System.out.println("Contact number: ");
+				c.setContact(s.nextLine());
+				c.updateProfile(id, c);
+				System.out.println("Profile updated succesfully");
+				break;
+				
+			case "3": 
+				gm.viewEmployee();
+				break;
+				
+			case "4":
+				System.out.println("Please enter following the details to add new employee");
+				Employee e = new Employee();
+				System.out.println("Name");
+				e.setName(s.nextLine());
+				System.out.println("Age: ");
+				e.setAge(Integer.parseInt(s.nextLine()));
+				System.out.println("Contact number: ");
+				e.setContact(s.nextLine());
+				System.out.println("Role:");
+				e.setRole(s.nextLine());
+				System.out.println("Email (username): ");
+				e.setEmail(s.nextLine());
+				System.out.println("Password: ");
+				e.setPassword(s.nextLine());
+				e.setEmpID(AllData.employeeList.size()-1);
+				gm.addEmployee(e);
+				System.out.println("Employee added sucessfully!!");
+				break;
+				
+			case "5":
+				gm.viewEmployee();
+				System.out.println("Please provide the id of the employee you want to update:");
+				int empId = s.nextInt();
+				System.out.println("Please enter following the details to add new employee");
+				Employee e1 = new Employee();
+				System.out.println("Name");
+				e1.setName(s.nextLine());
+				System.out.println("Age: ");
+				e1.setAge(Integer.parseInt(s.nextLine()));
+				System.out.println("Contact number: ");
+				e1.setContact(s.nextLine());
+				System.out.println("Role:");
+				e1.setRole(s.nextLine());
+				System.out.println("Email (username): ");
+				e1.setEmail(s.nextLine());
+				System.out.println("Password: ");
+				gm.updateEmployee(empId, e1);
+				System.out.println("Employee updated sucessfully!!");
+				break;
+				
+			case "6":
+				gm.viewEmployee();
+				System.out.println("Please provide the id of the employee you want to delete:");
+				int empID = s.nextInt();
+				gm.deleteEmployee(empID);
+				System.out.println("Employee deleted sucessfully!!");
+				break;
+				
+			case "7":
+				gm.viewAllReservations();
+				break;	
+				
+			case "8":
+				gm.viewActiveReservations();
+				break;	
+				
+			case "9":
+				gm.cancelReservation();
+				break;	
+				
+			case "10":
+				gm.viewCustomerDetails();
+				break;	
+				
+			case "11":
+				gm.viewRooms();
+				break;
+				
+			case "12":
+				flag = true;
+				break;
+				
+			} if(flag == true) {
+				System.out.println("Successfully Loggedout");
+				break;
+			}
+		}
+		
 		
 	}
 
@@ -201,8 +327,8 @@ public class JupiterHotels {
 			System.out.println("  8. Add Employee ");
 			System.out.println("  9. Update Employess ");
 			System.out.println("  10. Delete Employee");
-			System.out.println("  11. Assign General Manager  ");
-			System.out.println("  12. Assign Executive Chef");
+			System.out.println("  11. Create General Manager  ");
+			System.out.println("  12. Create Executive Chef");
 			System.out.println("  13. Logout  ");
 			System.out.println("=============================");
 			Scanner s = new Scanner(System.in);
