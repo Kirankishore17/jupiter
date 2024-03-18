@@ -42,25 +42,33 @@ public class OrderMenuItem {
 	}
 
 	public void orderFoodItems(Integer id) {
-		Scanner s = new Scanner(System.in);
-		System.out.println("Please enter you choice of food: ");
-		System.out.print("=: ");
-		int i = Integer.parseInt(s.nextLine());
-		List<OrderMenuItem> list = AllData.customerList.get(id).getOrder();
-		OrderMenuItem od = new OrderMenuItem();
-		if (list == null)
-			list = new ArrayList<>();
-		int size = (list != null) ? list.size() : 0;
-		if (i < AllData.foodList.size() && i > 0) {
-			FoodItem data = AllData.foodList.get(i - 1);
-			od.setOrderId(size);
-			od.setQuantity(1);
-			od.setTotal(0);
-			od.setName(data.getMealName());
-			list.add(od);
-			AllData.customerList.get(id).setOrder(list);
+		Customer customer = AllData.customerList.stream().filter(c -> c.getCustomerId() == id).findFirst().get();
+		boolean status = (customer.getReservation() != null && customer.getReservation().getCheckinManagement() != null)
+				? customer.getReservation().getCheckinManagement().getCheckIn()
+				: false;
+		if (status) {
+			List<OrderMenuItem> list = customer.getOrder();
+			Scanner s = new Scanner(System.in);
+			System.out.println("Please enter you choice of food: ");
+			System.out.print("=: ");
+			int i = Integer.parseInt(s.nextLine());
+			OrderMenuItem od = new OrderMenuItem();
+			if (list == null)
+				list = new ArrayList<>();
+			int size = (list != null) ? list.size() : 0;
+			if (i < AllData.foodList.size() && i > 0) {
+				FoodItem data = AllData.foodList.get(i - 1);
+				od.setOrderId(size);
+				od.setQuantity(1);
+				od.setTotal(0);
+				od.setName(data.getMealName());
+				list.add(od);
+				AllData.customerList.get(id).setOrder(list);
+			} else {
+				System.out.println("Invalid Input");
+			}
 		} else {
-			System.out.println("Invalid Input");
+			System.out.println("Please checkin to order food");
 		}
 	}
 
