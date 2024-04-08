@@ -119,6 +119,15 @@ public class ExecutiveChef extends Employee {
 		OrderMenuItem od = new OrderMenuItem();
 		od.viewDrinkItems();;
 	}
+
+	public void viewReceivedOrders() {
+		AllData.customerList.stream().flatMap(c -> c.getOrder())
+	}
+
+	public void prepareOrder() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 	

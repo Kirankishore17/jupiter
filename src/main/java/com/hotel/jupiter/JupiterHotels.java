@@ -79,8 +79,8 @@ public class JupiterHotels {
 		while (true) {
 			System.out.println("=============================");
 			System.out.println("  Welcome to Jupiter Hotels  ");
-			System.out.println("  1. View Profile  ");
-			System.out.println("  2. Update Profile  ");
+			System.out.println("  1. View Received Orders  ");
+			System.out.println("  2. Prepare Order");
 			System.out.println("  3. View food items  ");
 			System.out.println("  4. Add food items ");
 			System.out.println("  5. Update food items  ");
@@ -89,7 +89,7 @@ public class JupiterHotels {
 			System.out.println("  8. Add drink items ");
 			System.out.println("  9. Update drink items  ");
 			System.out.println("  10. Delete drink items  ");
-			System.out.println("  11. View all orders  ");
+			System.out.println("  11. View ");
 			System.out.println("  12. Logout  ");
 			System.out.println("=============================");
 			Scanner s = new Scanner(System.in);
@@ -100,9 +100,11 @@ public class JupiterHotels {
 			switch (i) {
 			
 				case "1":
+					ec.viewReceivedOrders();
 					break;
 					
 				case "2":
+					ec.prepareOrder();
 					break;
 					
 				case "3":
@@ -578,6 +580,7 @@ public class JupiterHotels {
 		System.out.println("|- 3. View Drink  ");
 		System.out.println("|- 4. Order Drink  ");
 		System.out.println("|- 5. View Orders  ");
+		System.out.println("|- 6. Cancel Order  ");
 		System.out.println("|--> ");
 		int b = Integer.parseInt(s.nextLine());
 		switch(b) {
@@ -596,6 +599,9 @@ public class JupiterHotels {
 		case 5:
 			Customer cu = AllData.customerList.get(id);
 			cu.viewOrders(cu.getOrder());
+			break;
+		case 6:
+			order.cancelOrder(id);
 			break;
 		}
 	}
