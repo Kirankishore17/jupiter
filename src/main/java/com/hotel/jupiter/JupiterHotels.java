@@ -170,6 +170,7 @@ public class JupiterHotels {
 					break;
 					
 				case "11":
+					ec.viewAllCustomerOrders();
 					break;
 					
 				case "12":

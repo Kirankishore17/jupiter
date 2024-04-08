@@ -16,6 +16,7 @@ public class OrderMenuItem {
 	private String name;
 	private Integer total;
 	private String state;
+	private Integer customerId;
 
 	public void viewFoodItems() {
 		int i;
@@ -64,6 +65,7 @@ public class OrderMenuItem {
 				od.setTotal(0);
 				od.setName(data.getMealName());
 				od.setState(OrderState.ORDER_RECEIVED.getCurrentValue());
+				od.setCustomerId(id);
 				list.add(od);
 				AllData.customerList.get(id).setOrder(list);
 				System.out.println("Food ordered successfully");
@@ -92,6 +94,7 @@ public class OrderMenuItem {
 			od.setTotal(0);
 			od.setName(data.getMealName());
 			od.setState(OrderState.ORDER_RECEIVED.getCurrentValue());
+			od.setCustomerId(id);
 			list.add(od);
 			AllData.customerList.get(id).setOrder(list);
 			System.out.println("Drink ordered successfully");
@@ -133,6 +136,7 @@ public class OrderMenuItem {
 		this.total = total;
 	}
 
+	
 	public void cancelOrder(Integer id) {
 		Customer cu = AllData.customerList.get(id);
 		List<OrderMenuItem> list = cu.getOrder();

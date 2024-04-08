@@ -2,7 +2,7 @@ package com.hotel.jupiter.model;
 
 public enum OrderState {
 	
-	NO_ORDER("NO ORDER"),
+	IDLE("IDLE"),
 	ORDER_RECEIVED("ORDER RECEIVED"),
 	ORDER_PREPARED("ORDER PREPARED"),
 	ORDER_CANCELLED("ORDER CANCELLED"),
