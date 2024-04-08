@@ -150,7 +150,12 @@ public class Customer extends Account {
 
 		// Assuming createReservation takes a roomId and rooms is indexed the same way as room IDs
 		String message = this.reservation.createReservation(rooms.get(userInput - 1).getRoomId());
-
+		List<Room> updateRoom = this.reservation.getRooms();
+		Room entry = updateRoom.get(userInput - 1);
+		entry.setState(RoomState.RESERVED.getCurrentValue());
+		updateRoom.remove(userInput - 1);
+		updateRoom.set(userInput - 1, entry);
+		this.reservation.setRooms(updateRoom);
 		System.out.println("|- " + message);
 		System.out.println("");
 		
@@ -179,7 +184,7 @@ public class Customer extends Account {
 			    checkinManagement = new CheckinManagement();
 			    reservation.setCheckinManagement(checkinManagement);
 			}
-			
+		
 			checkinManagement.setReservation(reservation);
 			
 			if(!checkinManagement.getCheckIn()) {

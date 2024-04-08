@@ -9,7 +9,7 @@ import com.hotel.jupiter.model.DrinkItem;
 import com.hotel.jupiter.model.Employee;
 import com.hotel.jupiter.model.FoodItem;
 import com.hotel.jupiter.model.Room;
-
+import com.hotel.jupiter.model.RoomState;
 /**Ernest's Imports**/
 import com.hotel.jupiter.model.Reservation;
 
@@ -164,6 +164,7 @@ public class AllData {
 		r1.setRoomOccupancy(3);
 		r1.setRoomPrice(100.00);
 		r1.setRoomTitle("Cozy Studio");
+		r1.setState(RoomState.AVAILABLE.getCurrentValue());
 		list.add(r1);
 		Room r2 = new Room();
 		r2.setIsAvailable(true);
@@ -173,6 +174,7 @@ public class AllData {
 		r2.setRoomOccupancy(4);
 		r2.setRoomPrice(100.00);
 		r2.setRoomTitle("One bedroom delux with a double bed ");
+		r2.setState(RoomState.AVAILABLE.getCurrentValue());
 		list.add(r2);
 		return list;
 	}

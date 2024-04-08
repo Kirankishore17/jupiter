@@ -85,7 +85,7 @@ public class CheckinManagement {
     	
     	// make the room available, since reservation is cancelled
     	room.setIsAvailable(true);
-    	
+    	room.setState(RoomState.CHECKEDOUT.getCurrentValue());
     	// set the reservation property of the Room class to null
     	room.setReservation(null);
         
