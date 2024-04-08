@@ -64,6 +64,7 @@ public class OrderMenuItem {
 				od.setName(data.getMealName());
 				list.add(od);
 				AllData.customerList.get(id).setOrder(list);
+				System.out.println("Food ordered successfully");
 			} else {
 				System.out.println("Invalid Input");
 			}
@@ -90,6 +91,7 @@ public class OrderMenuItem {
 			od.setName(data.getMealName());
 			list.add(od);
 			AllData.customerList.get(id).setOrder(list);
+			System.out.println("Drink ordered successfully");
 		} else {
 			System.out.println("Invalid Input");
 		}
