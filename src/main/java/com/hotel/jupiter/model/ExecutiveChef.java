@@ -1,5 +1,6 @@
 package com.hotel.jupiter.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -118,6 +119,59 @@ public class ExecutiveChef extends Employee {
 	public void viewAllDrinkItems() {
 		OrderMenuItem od = new OrderMenuItem();
 		od.viewDrinkItems();;
+	}
+
+	public void viewReceivedOrders() {
+		List<OrderMenuItem> pendingOrders = getPendingOrders();
+		displayOrders(pendingOrders);	
+	}
+
+	private void displayOrders(List<OrderMenuItem> list) {
+		int i;
+		OrderMenuItem data;
+		System.out.println("=============================");
+		System.out.println("            Orders  ");
+		System.out.println("=============================");
+		for (i = 1; i <= list.size(); i++) {
+			data = list.get(i - 1);
+			System.out.println("|- " + i + ". " + data.getName());
+			System.out.println("|- Qty: " + data.getQuantity());
+			System.out.println("|- Status: " + data.getState());
+			System.out.println("|");
+		}
+		
+	}
+
+	public void prepareOrder() {
+		List<OrderMenuItem> pendingOrders = getPendingOrders();
+		viewReceivedOrders();
+		Scanner s = new Scanner(System.in);
+		System.out.println("Select order to prepare: ");
+		System.out.print("=: ");
+		int i = Integer.parseInt(s.nextLine());
+		if (i <= pendingOrders.size() && i > 0) {
+			OrderMenuItem item = pendingOrders.get(i);
+			List<OrderMenuItem> orders = AllData.customerList.get(item.getCustomerId()).getOrder();
+			item.setState(OrderState.ORDER_PREPARED.getCurrentValue());
+			orders.remove(i - 1);
+			orders.set(i - 1, item);
+			AllData.customerList.get(item.getCustomerId()).setOrder(orders);
+		} else {
+			System.out.println("Invalid Input");
+		}
+
+	}
+
+	private List<OrderMenuItem> getPendingOrders() {
+		return AllData.customerList.stream().flatMap(c -> c.getOrder().stream()).filter(x -> x.getState().equals(OrderState.ORDER_PREPARED.getCurrentValue())).collect(Collectors.toList());
+	}
+
+	private List<OrderMenuItem> getAllOrders() {
+		return AllData.customerList.stream().flatMap(c -> c.getOrder().stream()).collect(Collectors.toList());
+	}
+
+	public void viewAllCustomerOrders() {
+		displayOrders(getAllOrders());
 	}
 	
 	

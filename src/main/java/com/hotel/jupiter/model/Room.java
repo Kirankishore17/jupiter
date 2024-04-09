@@ -19,6 +19,7 @@ public class Room {
 	private Double roomPrice;
 	private String roomNumber;
 	private Reservation reservation;
+	private String state;//"AVAILABLE","RESERVED","CHECKEDIN","CHECKEDOUT","CANCELLED"
 
 	public Integer getRoomId() {
 		return roomId;
@@ -82,6 +83,14 @@ public class Room {
 
 	public void setReservation(Reservation reservation) {
 		this.reservation = reservation;
+	}
+	
+	public String getState() {
+		return this.state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
 	}
 
 	public void viewRoom() {
