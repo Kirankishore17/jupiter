@@ -6,9 +6,7 @@ import java.util.Scanner;
 
 import com.hotel.jupiter.AllData;
 
-import lombok.Data;
 
-@Data
 public class OrderMenuItem {
 
 	private Integer orderId;
@@ -18,6 +16,7 @@ public class OrderMenuItem {
 	private String state;
 	private Integer customerId;
 
+	
 	public void viewFoodItems() {
 		int i;
 		FoodItem data;
@@ -156,6 +155,22 @@ public class OrderMenuItem {
 			System.out.println("Invalid choice: choice is out of range");
 		}
 		
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public Integer getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(Integer customerId) {
+		this.customerId = customerId;
 	}
 
 }

@@ -5,9 +5,6 @@ import java.util.stream.Collectors;
 
 import com.hotel.jupiter.AllData;
 
-import lombok.Data;
-
-@Data
 public class Account {
 
 	private String name;
@@ -17,27 +14,26 @@ public class Account {
 	private String password;
 
 	public int login(String user, String pass) {
-		if(user.equalsIgnoreCase("admin") && pass.equalsIgnoreCase("admin")) {
+		if (user.equalsIgnoreCase("admin") && pass.equalsIgnoreCase("admin")) {
 			return -30;
-		}
-		else if(user.equalsIgnoreCase("gm") && pass.equalsIgnoreCase("gm")) {
+		} else if (user.equalsIgnoreCase("gm") && pass.equalsIgnoreCase("gm")) {
 			return -20;
-		} 
-		else if(user.equalsIgnoreCase("ec") && pass.equalsIgnoreCase("ec")) {
+		} else if (user.equalsIgnoreCase("ec") && pass.equalsIgnoreCase("ec")) {
 			return -10;
-		} 
-		else {
-		List<Customer> customers = AllData.customerList.stream()
-				.filter(c -> c.getEmail().equals(user) && c.getPassword().equals(pass)).collect(Collectors.toList());
-		return customers.isEmpty() ? -1 : customers.get(0).getCustomerId().intValue();
+		} else {
+			List<Customer> customers = AllData.customerList.stream()
+					.filter(c -> c.getEmail().equals(user) && c.getPassword().equals(pass))
+					.collect(Collectors.toList());
+			return customers.isEmpty() ? -1 : customers.get(0).getCustomerId().intValue();
 		}
 	}
-	
+
 	public void signUp(Customer c) {
-		List<Customer> list = AllData.customerList.stream().filter(x->x.getEmail()==c.getEmail()).collect(Collectors.toList());
-		if(list.isEmpty()) {
-		AllData.customerList.add(c);
-		System.out.println("Customer registration successful");
+		List<Customer> list = AllData.customerList.stream().filter(x -> x.getEmail() == c.getEmail())
+				.collect(Collectors.toList());
+		if (list.isEmpty()) {
+			AllData.customerList.add(c);
+			System.out.println("Customer registration successful");
 		} else {
 			System.out.println("Customer ID already exists");
 		}

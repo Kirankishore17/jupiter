@@ -1,13 +1,11 @@
 package com.hotel.jupiter.model;
 
 import java.util.List;
-import java.util.*;
+import java.util.Scanner;
 
 import com.hotel.jupiter.AllData;
 
-import lombok.Data;
 
-@Data
 public class Customer extends Account {
 
 	private Integer customerId;
@@ -150,12 +148,13 @@ public class Customer extends Account {
 
 		// Assuming createReservation takes a roomId and rooms is indexed the same way as room IDs
 		String message = this.reservation.createReservation(rooms.get(userInput - 1).getRoomId());
-		List<Room> updateRoom = this.reservation.getRooms();
-		Room entry = updateRoom.get(userInput - 1);
-		entry.setState(RoomState.RESERVED.getCurrentValue());
-		updateRoom.remove(userInput - 1);
-		updateRoom.set(userInput - 1, entry);
-		this.reservation.setRooms(updateRoom);
+		System.out.println("--------> success" + message);
+//		List<Room> updateRoom = this.reservation.getRooms();
+//		Room entry = updateRoom.get(userInput - 1);
+//		entry.setState(RoomState.RESERVED.getCurrentValue());
+//		updateRoom.remove(userInput - 1);
+//		updateRoom.set(userInput - 1, entry);
+//		this.reservation.setRooms(updateRoom);
 		System.out.println("|- " + message);
 		System.out.println("");
 		
