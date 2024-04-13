@@ -11,8 +11,7 @@ import com.hotel.jupiter.model.Customer;
 
 class CustomerTest {
 
-	
-    @Test
+	@Test
     public void testViewProfile() {
 		Customer c1 = new Customer();
 		c1.setAge(20);

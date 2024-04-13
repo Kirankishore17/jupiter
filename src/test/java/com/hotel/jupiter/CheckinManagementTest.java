@@ -27,9 +27,11 @@ public class CheckinManagementTest {
         customer.setAge(20);
         customer.setContact("12345678");
         customer.setCustomerId(AllData.customerList.size() + 1);
-        customer.setEmail("edward@mail.com");
-        customer.setName("edward");
+        customer.setEmail("ed3@mail.com");
+        customer.setName("ed3");
         customer.setPassword("123");
+        
+        AllData.customerList.add(customer);
         
         Reservation reservation = new Reservation();
         
@@ -66,9 +68,11 @@ public class CheckinManagementTest {
         customer.setAge(20);
         customer.setContact("12345678");
         customer.setCustomerId(AllData.customerList.size() + 1);
-        customer.setEmail("edward@mail.com");
-        customer.setName("edward");
+        customer.setEmail("ed4@mail.com");
+        customer.setName("ed4");
         customer.setPassword("123");
+        
+        AllData.customerList.add(customer);
         
         Reservation reservation = new Reservation();
         
@@ -101,12 +105,14 @@ public class CheckinManagementTest {
 		AllData.roomList.add(room);
         
         Customer customer = new Customer();
+        
+        AllData.customerList.add(customer);
        
         customer.setAge(20);
         customer.setContact("12345678");
         customer.setCustomerId(AllData.customerList.size() + 1);
-        customer.setEmail("edward@mail.com");
-        customer.setName("edward");
+        customer.setEmail("ed5@mail.com");
+        customer.setName("ed5");
         customer.setPassword("123");
         
         Reservation reservation = new Reservation();
@@ -114,11 +120,11 @@ public class CheckinManagementTest {
         customer.setReservation(reservation);
         customer.getReservation().setCustomer(customer);
         
-        
 		customer.getReservation().createReservation(room.getRoomId());
 
         assertTrue(customer.getReservation().getCheckinManagement().cancelBooking());
     }
+    
     
     @Test
     public void testGenerateBill() {
@@ -136,19 +142,21 @@ public class CheckinManagementTest {
 		AllData.roomList.add(room);
         
         Customer customer = new Customer();
+        
+        AllData.customerList.add(customer);
        
         customer.setAge(20);
         customer.setContact("12345678");
         customer.setCustomerId(AllData.customerList.size() + 1);
-        customer.setEmail("edward@mail.com");
-        customer.setName("edward");
+        customer.setEmail("ed6@mail.com");
+        customer.setName("ed6");
         customer.setPassword("123");
         
         Reservation reservation = new Reservation();
         
         customer.setReservation(reservation);
-        customer.getReservation().setCustomer(customer);
         
+        customer.getReservation().setCustomer(customer);
         
 		customer.getReservation().createReservation(room.getRoomId());
 

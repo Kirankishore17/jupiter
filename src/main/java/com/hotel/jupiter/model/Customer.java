@@ -118,7 +118,7 @@ public class Customer extends Account {
 		    
 		} catch (NumberFormatException e) {
 			
-		    System.out.println("Invalid input. Please enter a valid integer.");
+		    System.out.println("|- Invalid input. Please enter a valid integer.");
 		    System.out.println("");
 		}
 
@@ -148,14 +148,7 @@ public class Customer extends Account {
 
 		// Assuming createReservation takes a roomId and rooms is indexed the same way as room IDs
 		String message = this.reservation.createReservation(rooms.get(userInput - 1).getRoomId());
-		System.out.println("--------> success" + message);
-//		List<Room> updateRoom = this.reservation.getRooms();
-//		Room entry = updateRoom.get(userInput - 1);
-//		entry.setState(RoomState.RESERVED.getCurrentValue());
-//		updateRoom.remove(userInput - 1);
-//		updateRoom.set(userInput - 1, entry);
-//		this.reservation.setRooms(updateRoom);
-		System.out.println("|- " + message);
+		System.out.println("--------> " + message);
 		System.out.println("");
 		
 		return;
@@ -203,7 +196,7 @@ public class Customer extends Account {
 		}
 		
 		// display message
-		System.out.println("|- " + message);
+		System.out.println("--------> " + message);
 		System.out.println("");
 		
 		return;
@@ -247,7 +240,7 @@ public class Customer extends Account {
 			System.out.println("");
 			
 			// print bill
-			System.out.println("|- " + generatedAmount + " CAD");
+			System.out.println("--------> " + generatedAmount + " CAD");
 			
 			// prompt customer to enter amount
 			System.out.println("|- Enter Amount To Proceed:");
@@ -261,7 +254,7 @@ public class Customer extends Account {
 			    
 			} catch (NumberFormatException e) {
 				
-			    System.out.println("Invalid input. Please enter a valid integer.");
+			    System.out.println("|- Invalid input. Please enter a valid integer.");
 			    System.out.println("");
 			}
 			
@@ -283,7 +276,7 @@ public class Customer extends Account {
 					    
 					} catch (NumberFormatException e) {
 						
-					    System.out.println("Invalid input. Please enter a valid integer.");
+					    System.out.println("|- Invalid input. Please enter a valid integer.");
 					    System.out.println("");
 					}
 			    }
@@ -311,7 +304,7 @@ public class Customer extends Account {
 			    
 			} catch (NumberFormatException e) {
 				
-			    System.out.println("Invalid input. Please enter a valid integer.");
+			    System.out.println("|- Invalid input. Please enter a valid integer.");
 			    System.out.println("");
 			}
 			
@@ -332,7 +325,7 @@ public class Customer extends Account {
 					    
 					} catch (NumberFormatException e) {
 						
-					    System.out.println("Invalid input. Please enter a valid integer.");
+					    System.out.println("|- Invalid input. Please enter a valid integer.");
 					    System.out.println("");
 					}
 			    }
@@ -369,7 +362,7 @@ public class Customer extends Account {
 		}
 		
 		// display message
-		System.out.println("|- " + message);
+		System.out.println("--------> " + message);
 		System.out.println("");
 		
 		return;
@@ -411,7 +404,7 @@ public class Customer extends Account {
 		}
 		
 		// display message
-		System.out.println("|- " + message);
+		System.out.println("--------> " + message);
 		System.out.println("");
 		
 		return;
@@ -472,7 +465,7 @@ public class Customer extends Account {
 		}
 		
 		// display message
-		System.out.println("|- " + message);
+		System.out.println("--------> " + message);
 		System.out.println("");
 		
 		return;
