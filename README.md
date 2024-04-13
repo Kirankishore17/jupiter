@@ -20,5 +20,6 @@ To perform a clean install via the command line, use the following command:
 
 ```bash
 mvn clean install
+```
 
 3. Run the JupyterHotels class which is the main entry class for this project. This will start up the application and you can interact with the application via the console.
