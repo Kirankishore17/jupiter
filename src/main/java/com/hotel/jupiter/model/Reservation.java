@@ -169,9 +169,6 @@ public class Reservation {
             
             // generate the invoice for this reservation
             int invoiceId = this.invoice.generateInvoice(room.getRoomPrice());
-  
-            // Add the reservation to reservationList
-            this.addToHistory(this);
             
             // Establish association between reservation and check-in management
             this.checkinManagement = (this.checkinManagement != null ? this.checkinManagement : new CheckinManagement());
@@ -184,6 +181,9 @@ public class Reservation {
             
             // add reservation to general manager association list
             this.generalManager.getReservations().add(this);
+            
+            // Add the reservation to reservationList
+            this.addToHistory(this);
 
             return String.format("Reservation created successfully:%n Room Number: %s%n Invoice ID: %d%n Price: $%.2f CAD", 
             		room.getRoomNumber(), invoiceId, this.invoice.getPrice());

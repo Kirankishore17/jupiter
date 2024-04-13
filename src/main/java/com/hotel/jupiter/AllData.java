@@ -10,7 +10,6 @@ import com.hotel.jupiter.model.Employee;
 import com.hotel.jupiter.model.FoodItem;
 import com.hotel.jupiter.model.Room;
 import com.hotel.jupiter.model.RoomState;
-/**Ernest's Imports**/
 import com.hotel.jupiter.model.Reservation;
 
 public class AllData {
@@ -52,6 +51,7 @@ public class AllData {
 
 		return list;
 	}
+	
 	private static List<Employee> generateEmployees(){
 		List<Employee> emp = new ArrayList();
 		Employee e1 = new Employee();

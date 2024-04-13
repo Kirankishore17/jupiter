@@ -28,19 +28,29 @@ public class PaymentTest {
 	    customer.setAge(20);
 	    customer.setContact("12345678");
 	    customer.setCustomerId(AllData.customerList.size() + 1);
-	    customer.setEmail("edwa232324rd@mail.com");
-	    customer.setName("edward");
+	    customer.setEmail("ed3@mail.com");
+	    customer.setName("ed3");
 	    customer.setPassword("123");
-	    CheckinManagement checkinManagement = new CheckinManagement();
-	    checkinManagement.setPayment(new Payment());
-	    checkinManagement.getPayment().setCheckinManagement(checkinManagement);
-	    checkinManagement.getPayment().setPaymentAmount(room.getRoomPrice().intValue());
-	    checkinManagement.getPayment().processPaymentReport();
+	    
+	    AllData.customerList.add(customer);
+	    
 	    Reservation reservation = new Reservation();
-	    reservation.setCustomer(customer);
+	    
+        customer.setReservation(reservation);
+        
+        customer.getReservation().setCustomer(customer);
+	    
 	    reservation.createReservation(room.getRoomId());
-	    reservation.setCheckinManagement(checkinManagement);
-	    customer.setReservation(reservation);	    
+	    
+	    Payment payment = new Payment();
+	    
+	    reservation.getCheckinManagement().setPayment(payment);
+	    
+	    payment.setCheckinManagement(reservation.getCheckinManagement());
+	    
+	    payment.setPaymentAmount((int) room.getRoomPrice().doubleValue());
+	    
+	    payment.processPaymentReport();
 	    
 	    assertTrue(customer.getReservation().getCheckinManagement().getPayment().getPaymentStatus());
 	}

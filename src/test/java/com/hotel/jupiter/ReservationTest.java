@@ -28,9 +28,11 @@ public class ReservationTest {
         customer.setAge(20);
         customer.setContact("12345678");
         customer.setCustomerId(AllData.customerList.size() + 1);
-        customer.setEmail("edward@mail.com");
-        customer.setName("edward");
+        customer.setEmail("ed2@mail.com");
+        customer.setName("ed2");
         customer.setPassword("123");
+        
+        AllData.customerList.add(customer);
         
         Reservation reservation = new Reservation();
         
