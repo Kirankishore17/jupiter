@@ -15,7 +15,7 @@ public class PaymentTest {
 	    
 		room.setIsAvailable(true);
 		room.setRoomDescription("This studio is very unique located in the heart of the action on a very quiet and charming street" );
-		room.setRoomId(AllData.roomList.size() + 1);
+		room.setRoomId(AllData.roomList.size() + 134354);
 		room.setRoomNumber("500");
 		room.setRoomOccupancy(3);
 		room.setRoomPrice(100.00);
@@ -28,30 +28,19 @@ public class PaymentTest {
 	    customer.setAge(20);
 	    customer.setContact("12345678");
 	    customer.setCustomerId(AllData.customerList.size() + 1);
-	    customer.setEmail("edward@mail.com");
+	    customer.setEmail("edwa232324rd@mail.com");
 	    customer.setName("edward");
 	    customer.setPassword("123");
-	    
-	    Reservation reservation = new Reservation();
-	    
-	    customer.setReservation(reservation);
-	    customer.getReservation().setCustomer(customer);
-	    
-	    customer.getReservation().createReservation(room.getRoomId());
-	    
-	    double roomPriceDouble = room.getRoomPrice(); // Get the Double value
-	    
-	    int roomPrice = (int) roomPriceDouble; // Cast to integer
-	    
-	    CheckinManagement checkinManagement = customer.getReservation().getCheckinManagement();
-	    
+	    CheckinManagement checkinManagement = new CheckinManagement();
 	    checkinManagement.setPayment(new Payment());
-	    
 	    checkinManagement.getPayment().setCheckinManagement(checkinManagement);
-	    
-	    checkinManagement.getPayment().setPaymentAmount(roomPrice);
-	    
+	    checkinManagement.getPayment().setPaymentAmount(room.getRoomPrice().intValue());
 	    checkinManagement.getPayment().processPaymentReport();
+	    Reservation reservation = new Reservation();
+	    reservation.setCustomer(customer);
+	    reservation.createReservation(room.getRoomId());
+	    reservation.setCheckinManagement(checkinManagement);
+	    customer.setReservation(reservation);	    
 	    
 	    assertTrue(customer.getReservation().getCheckinManagement().getPayment().getPaymentStatus());
 	}
