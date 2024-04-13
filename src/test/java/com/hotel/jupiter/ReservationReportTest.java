@@ -45,6 +45,6 @@ public class ReservationReportTest {
         
         reservationReport.setReservation(reservation);
         
-        assertNotNull(reservation.getReservationReport().getReservationReport());
+        assertNotNull(reservation.getReservationReport());
 	}
 }

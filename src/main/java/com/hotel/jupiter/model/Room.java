@@ -5,9 +5,7 @@ import java.util.stream.Collectors;
 
 import com.hotel.jupiter.AllData;
 
-import lombok.Data;
 
-@Data
 public class Room {
 
 	private Integer roomId;

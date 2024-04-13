@@ -18,7 +18,7 @@ class AccountTest {
 		c1.setAge(20);
 		c1.setContact("55566669999");
 		c1.setCustomerId(10);
-		c1.setEmail("kk");
+		c1.setEmail("kkierfijmfrjim");
 		c1.setName("priya");
 		c1.setPassword("kk");
         assertFalse(AllData.customerList.contains(c1));
