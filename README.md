@@ -15,11 +15,4 @@ The system also has different functionalities for the executive chef and the gen
 
 ## How To Run Code:
 1. **Download or clone** this code from this repository into your local repository.
-2. Because it is a Maven project, you may need to do a **clean install** in your IDE. This can also be done via the command line.
-To perform a clean install via the command line, use the following command:
-
-```bash
-mvn clean install
-```
-
-3. Run the JupyterHotels class which is the main entry class for this project. This will start up the application and you can interact with the application via the console.
+2. Run the JupyterHotels class which is the main entry class for this project. This will start up the application and you can interact with the application via the console.
