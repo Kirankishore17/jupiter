@@ -197,11 +197,10 @@ public class JupiterHotels {
 			System.out.println("  5. Update Employess ");
 			System.out.println("  6. Delete Employee");
 			System.out.println("  7. View all Reservation ");
-			System.out.println("  8. view Active Reservations");
-			System.out.println("  9. Cancel Reservation  ");
-			System.out.println("  10. View Customers  ");
-			System.out.println("  11. View All rooms  ");
-			System.out.println("  12. Logout  ");
+			System.out.println("  8. Cancel Reservation  ");
+			System.out.println("  9. View Customers  ");
+			System.out.println("  10. View All rooms  ");
+			System.out.println("  11. Logout  ");
 			System.out.println("=============================");
 			Scanner s = new Scanner(System.in);
 			boolean flag = false;
@@ -286,22 +285,18 @@ public class JupiterHotels {
 				break;	
 				
 			case "8":
-				gm.viewActiveReservations();
-				break;	
-				
-			case "9":
 				gm.cancelReservation();
 				break;	
 				
-			case "10":
+			case "9":
 				gm.viewCustomerDetails();
 				break;	
 				
-			case "11":
+			case "10":
 				gm.viewRooms();
 				break;
 				
-			case "12":
+			case "11":
 				flag = true;
 				break;
 				
