@@ -49,59 +49,41 @@ public class GeneralManager extends Employee {
 		List<Reservation> allReservations = r.getReservationReport().getReservationReport();
 
 		// display all reservations
-		System.out.println("=========================================");
-		System.out.println("       Lists Of All Reservations         ");
-		System.out.println("=========================================");
-		System.out.println("");
-
-		int i = 1;
-		for (Reservation reservation : allReservations) {
-
-			// Convert milliseconds to LocalDate
-			LocalDate date = Instant.ofEpochMilli(reservation.getReservationDate()).atZone(ZoneId.systemDefault())
-					.toLocalDate();
-
-			// Define the date format
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-
-			// Format the LocalDate object using the formatter
-			String formattedDate = date.format(formatter);
-
-			System.out.println("|-" + i);
-			System.out.println("|- Reservation Date: " + formattedDate);
-			System.out.println("|- Maximum Period: " + reservation.getMaxPeriod());
+		if(allReservations.isEmpty()) {
+			
+			System.out.println("=========================================");
+			System.out.println("         No Reservations Yet             ");
+			System.out.println("=========================================");
 			System.out.println("");
-
-			i++;
-		}
-
-		return;
-	}
-
-	public void viewActiveReservations() {
-		// display all reservations
-		System.out.println("=========================================");
-		System.out.println("       Lists Of Active Reservations      ");
-		System.out.println("=========================================");
-		System.out.println("");
-
-		for (int i = 1; i <= this.reservations.size(); i++) {
-			Reservation reservation = this.reservations.get(i - 1);
-
-			// Convert milliseconds to LocalDate
-			LocalDate date = Instant.ofEpochMilli(reservation.getReservationDate()).atZone(ZoneId.systemDefault())
-					.toLocalDate();
-
-			// Define the date format
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-
-			// Format the LocalDate object using the formatter
-			String formattedDate = date.format(formatter);
-
-			System.out.println("|-" + i);
-			System.out.println("|- Reservation Date: " + formattedDate);
-			System.out.println("|- Maximum Period: " + reservation.getMaxPeriod());
+			
+		} else {
+		
+			System.out.println("=========================================");
+			System.out.println("       Lists Of All Reservations         ");
+			System.out.println("=========================================");
 			System.out.println("");
+		
+			int i = 1;
+			for (Reservation reservation : allReservations) {
+		
+				// Convert milliseconds to LocalDate
+				LocalDate date = Instant.ofEpochMilli(reservation.getReservationDate()).atZone(ZoneId.systemDefault())
+						.toLocalDate();
+		
+				// Define the date format
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		
+				// Format the LocalDate object using the formatter
+				String formattedDate = date.format(formatter);
+		
+				System.out.println("|-" + i);
+				System.out.println("|- Reservation Date: " + formattedDate);
+				System.out.println("|- Maximum Period: " + reservation.getMaxPeriod());
+				System.out.println("");
+		
+				i++;
+			}
+			
 		}
 
 		return;
@@ -109,93 +91,117 @@ public class GeneralManager extends Employee {
 
 	public void cancelReservation() {
 		// display all reservations
-		System.out.println("=========================================");
-		System.out.println("          Select A Reservation           ");
-		System.out.println("=========================================");
-		System.out.println("");
+		Reservation r = new Reservation();
 
-		for (int i = 1; i <= this.reservations.size(); i++) {
-			Reservation reservation = this.reservations.get(i - 1);
+		ReservationReport rr = new ReservationReport();
 
-			// Convert milliseconds to LocalDate
-			LocalDate date = Instant.ofEpochMilli(reservation.getReservationDate()).atZone(ZoneId.systemDefault())
-					.toLocalDate();
+		r.setGeneralManager(this);
 
-			// Define the date format
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		r.setReservationReport(rr);
 
-			// Format the LocalDate object using the formatter
-			String formattedDate = date.format(formatter);
+		rr.setReservation(r);
 
-			System.out.println("|-" + i);
-			System.out.println("|- Reservation Date: " + formattedDate);
-			System.out.println("|- Maximum Period: " + reservation.getMaxPeriod());
+		List<Reservation> allReservations = r.getReservationReport().getReservationReport();
+
+		// display all reservations
+		if(allReservations.isEmpty()) {
+			
+			System.out.println("=========================================");
+			System.out.println("           No Reservations               ");
+			System.out.println("=========================================");
 			System.out.println("");
-		}
-
-		@SuppressWarnings("resource")
-		Scanner scanner = new Scanner(System.in);
-
-		System.out.println("|- Enter A Number Option:");
-		System.out.println("");
-
-		int userInput = 0;
-
-		try {
-			userInput = Integer.parseInt(scanner.nextLine()); // Wait for user input
-
-		} catch (NumberFormatException e) {
-
-			System.out.println("Invalid input. Please enter a valid integer.");
+			
+		} else {
+		
+			System.out.println("=========================================");
+			System.out.println("          Select A Reservation           ");
+			System.out.println("=========================================");
 			System.out.println("");
-		}
-
-		while (true) {
-
-			// Check if userInput is a valid index in reservations list
-			if (userInput > 0 && userInput <= reservations.size()) {
-
-				break; // Valid input; exit loop
-			} else {
-
-				System.out.println("|- Invalid, Enter A Valid Number Option:");
+	
+			for (int i = 1; i <= allReservations.size(); i++) {
+				Reservation reservation = allReservations.get(i - 1);
+	
+				// Convert milliseconds to LocalDate
+				LocalDate date = Instant.ofEpochMilli(reservation.getReservationDate()).atZone(ZoneId.systemDefault())
+						.toLocalDate();
+	
+				// Define the date format
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+	
+				// Format the LocalDate object using the formatter
+				String formattedDate = date.format(formatter);
+	
+				System.out.println("|-" + i);
+				System.out.println("|- Reservation Date: " + formattedDate);
+				System.out.println("|- Maximum Period: " + reservation.getMaxPeriod());
 				System.out.println("");
-
-				try {
-					userInput = Integer.parseInt(scanner.nextLine()); // Wait for user input
-
-				} catch (NumberFormatException e) {
-
-					System.out.println("Invalid input. Please enter a valid integer.");
+			}
+	
+			@SuppressWarnings("resource")
+			Scanner scanner = new Scanner(System.in);
+	
+			System.out.println("|- Enter A Number Option:");
+			System.out.println("");
+	
+			int userInput = 0;
+	
+			try {
+				userInput = Integer.parseInt(scanner.nextLine()); // Wait for user input
+	
+			} catch (NumberFormatException e) {
+	
+				System.out.println("Invalid input. Please enter a valid integer.");
+				System.out.println("");
+			}
+	
+			while (true) {
+	
+				// Check if userInput is a valid index in reservations list
+				if (userInput > 0 && userInput <= allReservations.size()) {
+	
+					break; // Valid input; exit loop
+				} else {
+	
+					System.out.println("|- Invalid, Enter A Valid Number Option:");
 					System.out.println("");
+	
+					try {
+						userInput = Integer.parseInt(scanner.nextLine()); // Wait for user input
+	
+					} catch (NumberFormatException e) {
+	
+						System.out.println("Invalid input. Please enter a valid integer.");
+						System.out.println("");
+					}
 				}
 			}
+	
+			// retrieve reservation
+			Reservation reservation = allReservations.get(userInput - 1);
+	
+			// set default message
+			String message = "Reservation could not be cancelled";
+	
+			boolean isCancelled = reservation.getCheckinManagement().cancelBooking();
+	
+			if (isCancelled) {
+	
+				// remove association between customer and reservation, since cancelled
+				reservation.setCustomer(null);
+	
+				reservation = null;
+	
+				// set success message
+				message = "Reservation cancelled successully";
+			}
+	
+			// display message
+			System.out.println("|- " + message);
+			System.out.println("");
+		
 		}
-
-		// retrieve reservation
-		Reservation reservation = reservations.get(userInput - 1);
-
-		// set default message
-		String message = "Reservation could not be cancelled";
-
-		boolean isCancelled = reservation.getCheckinManagement().cancelBooking();
-
-		if (isCancelled) {
-
-			// remove association between customer and reservation, since cancelled
-			reservation.setCustomer(null);
-
-			reservation = null;
-
-			// set success message
-			message = "Reservation cancelled successully";
-		}
-
-		// display message
-		System.out.println("|- " + message);
-		System.out.println("");
-
-		return;
+				
+		return;	
 	}
 
 	/**

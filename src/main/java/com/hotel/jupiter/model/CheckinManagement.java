@@ -105,6 +105,8 @@ public class CheckinManagement {
         this.reservation.getCustomer().setReservation(null);
         
 		this.reservation.setCustomer(null);
+		
+		AllData.reservationList.remove(reservation);
         
         return;
 	}
@@ -167,6 +169,8 @@ public class CheckinManagement {
             this.reservation.getCustomer().setReservation(null);
             
     		this.reservation.setCustomer(null);
+    		
+    		AllData.reservationList.remove(reservation);
             
             return true;
         }else {
